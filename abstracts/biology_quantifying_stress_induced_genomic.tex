@@ -1,0 +1,25 @@
+\makeabstract
+{
+Quantifying Stress-Induced Genomic Variation from Sequencing Data
+}
+{
+Paolo Canigiula (1,2), Kai Trepka (1), Vivian Zhang, PhD (1), Trey Lawrence (1), Peter J. Turnbaugh, PhD (1)
+}
+{
+\textsuperscript{1}Department of Microbiology and Immunology, University of California, San Francisco (UCSF), CA, USA\\
+\textsuperscript{2}Amherst College, MA, USA
+}
+{
+Certain species of bacteria in the gut microbiome cause disease, but treatment with antibiotics indiscriminately kills harmful and beneficial species. Bacteriophages, viruses that infect specific bacterial species, offer a more targeted treatment that could eliminate harmful species while maintaining beneficial gut microbes. While investigating the ability of the bacteriophage KL11 to kill the pathogenic gut bacterium Eggerthella lenta, we found that KL11 kills E. lenta in vitro but not in vivo (mouse gut microbiome). We aimed to test whether KL11 treatment selects for structural variants (SVs) of E. lenta that may confer resistance.
+}
+{
+We colonized 8 germ-free mice with E. lenta and infected them with either active KL11 (n=4) or heat-killed KL11 (n=4). After 4 days, we collected stool from each sample to sequence the DNA of the E. lenta in the gut microbiome. We used the computational tool Flye to create de novo genome assemblies from long-read sequencing data and performed whole-genome comparison using Mummer. Next, we created a pipeline to quantify the proportion of E. lenta strains in each sample using the tools Minimap, Samtools, and Sniffles. We also validated our pipeline predictions using simulated long reads.
+}
+{
+All genome assemblies from active-phage samples contained a large 32-kbp inversion (SV1) absent in the assemblies from heat-killed samples. We labeled this inversion SV1 and quantified its abundance across treatment groups. SV1 comprised an average of 4.1\% of the E. lenta population in heat-killed controls versus 43.8\% of the population in the active-phage group (p = 0.002). Our predicted strain abundance for our samples correlated with qPCR estimates (p = 0.007), an independent method for measuring structural variant proportions. We validated our pipeline using synthetic long reads simulated from reference genomes, and the predicted variant abundances closely matched the simulated proportions (p < 0.001).
+}
+{
+In conclusion, this investigation demonstrates that treatment of E. lenta with active KL11 phage selects for SV1, indicating SV1 confers resistance. Understanding the mechanism of resistance in SV1 strains will help researchers design effective bacteriophage interventions for harmful gut bacteria. This research also shows that long-read sequencing can be used to quantify structural variants from in vivo samples.
+}
+
+\newpage

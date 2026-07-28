@@ -1,0 +1,113 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt,twoside]{article}
+\usepackage[margin=1in,top=1.2in,headheight=20pt]{geometry}
+\usepackage{mathptmx}
+\usepackage{setspace}
+\usepackage[indent=0pt, skip=11pt]{parskip}
+\usepackage{shellesc}
+
+\usepackage{csvsimple-l3}
+%\input{preamble}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% FANCYHDR
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0.5pt} 
+\renewcommand{\footrulewidth}{0.5pt}
+\fancyhead[LE,RO]{\rightmark}
+\fancyhead[RE,LO]{\thepage}
+\fancyfoot[C]{2026 Amherst College Summer Research}
+
+\fancypagestyle{sectionpage}{
+  \fancyhf{}
+  \fancyhead[RE,LO]{\thepage}
+  \fancyfoot[C]{2026 Amherst College Summer Research}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TITLESEC
+\usepackage{titlesec}
+\titleformat{\section}
+  {\LARGE\bfseries\centering}{\thesection}{1em}{}                                
+\titleformat{\subsection}
+  {\Large\bfseries}{\thesubsection}{1em}{}                                
+\titlespacing{\subsection}
+  {0pt}{0pt}{0pt}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\providecommand\phantomsection{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newenvironment{simplechar}{%
+   \catcode`\$=12
+   \catcode`\&=12
+   \catcode`\#=12
+   \catcode`\^=12
+   \catcode`\_=12
+   \catcode`\~=12
+   \catcode`\%=12
+}{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\raggedright
+%\tolerance=1
+\emergencystretch=\maxdimen % stops overflow on right edge
+\hyphenpenalty=10000 % stops hyphenation to maintain justify
+%\hbadness=10000
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setstretch{1.1}
+
+\newcommand{\usection}[1]{\section*{#1}\addcontentsline{toc}{section}{#1}}
+\newcommand{\usubsection}[1]{\subsection*{#1}\addcontentsline{toc}{subsection}{#1}\thispagestyle{sectionpage}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\startdiscipline}[1]{
+    \phantomsection
+    \addcontentsline{toc}{section}{#1}
+    \markright{#1}
+    \section*{#1}
+}
+
+\newcommand{\makeabstract}[7]{%
+    % #1: Title
+    % #2: Authors
+    % #3: Affiliations
+    % #4: Purpose
+    % #5: Methods
+    % #6: Results
+    % #7: Conclusion
+    \phantomsection
+    \addcontentsline{toc}{subsection}{#1}
+    \subsection*{#1}
+    {#2}\par
+    {#3}\par
+    \textbf{Purpose.}#4\par
+    \textbf{Methods.}#5\par
+    \textbf{Results.}#6\par
+    \textbf{Conclusion.}#7\par
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\newpage
+
+\tableofcontents
+
+\newpage
+
+\input{abstracts_index.tex}
+
+\end{document}

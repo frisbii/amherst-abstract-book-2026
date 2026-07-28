@@ -1,0 +1,25 @@
+\makeabstract
+{
+Encoding, Splitting, and Solving: Tackling Chvátal’s Conjecture with SAT
+}
+{
+Allison Klingler (1), Jesse Looney (1), Jonah McDonald (1), Gloria Wu (1)
+}
+{
+\textsuperscript{1}Department of Computer Science, Amherst College
+}
+{
+This study addresses Chvátal’s Conjecture, a long-standing problem in extremal combinatorics, which states that in any downset, one of the largest intersecting families is a star. An intersecting family is a set of subsets where the intersection of all pairwise sets is nonempty, and a star is an intersecting family where there exists a common element contained in all sets. Previous research safely verified the conjecture up to n = 7 (using an IP solver).
+}
+{
+The existing IP formulae were encoded into conjunctive normal form, and then solved using Kissat, a state-of-the-art SAT solver. Several model reductions were applied: (1) assertion of generalization of sets by grouping sets by their symmetric differences, (2) splitting cardinality constraints into cases and (3) splitting on the maximum and minimum size of subsets in the intersecting family in order to tackle each subproblem individually. For additional speedup, Cube and Conquer was used on the hardest subproblems. All problems were run on FrostByte, Amherst College’s high-performing computing cluster.
+}
+{
+For n = 7, our model reductions achieved a 4.15x speedup over the IP solver and a 70.09x speedup over the original SAT encoding. The total runtime was 41.9 seconds.
+We were able to safely solve n = 8 for the first time, with a total runtime of 422578.40 seconds. For the hardest subproblem, Cube and Conquer achieved an additional 3.84x speedup (reducing runtime to 4067 seconds).
+}
+{
+By encoding the existing IP formulae into SAT and splitting cardinality constraints and the minimum and maximum sets in the intersecting family, a significant speedup was achieved for n = 7 and, moreover, n = 8 was safely solved for the first time. We also showed that the hardest subproblems can be further partitioned into cubes and then solved in parallel, which allowed for further performance gain. 
+}
+
+\newpage

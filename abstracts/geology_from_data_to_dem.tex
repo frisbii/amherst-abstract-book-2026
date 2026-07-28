@@ -1,0 +1,24 @@
+\makeabstract
+{
+From Data to DEM: Generating Improved Basal Topographies of Petermann Glacier Using Novel Swath Radar Data Processing 
+}
+{
+Zachary Guo '27, Nicholas D. Holschuh, PhD (1)
+}
+{
+\textsuperscript{1}Department of Geology, Amherst College, Amherst, MA, USA
+}
+{
+Outlet glaciers are key sites of mass loss from the Greenland Ice Sheet, and projections of future mass loss are sensitive to the prescribed bed in ice sheet models. Increased resolution of the basal topography results in more accurate predictions, but measurements from flights over the ice sheet are limited in resolution and coverage. Generating swaths from cross-track radar data provides additional coverage by distinguishing the direction of the received radar signals. We can use these swaths to produce improved Digital Elevation Models (DEMs) of basal topography through kriging interpolation.
+}
+{
+We applied swath techniques to select radar data collected over a 32,400 km2 area near Petermann Glacier in Greenland, and used a bed tracking algorithm to identify which radar signals corresponded to reflections off of the bed of the ice sheet, generating the bed picks for the swaths. The variations in data quality and errors in the bed tracking algorithm required the use of a flagging and retracking algorithm to improve measurement accuracy, which removed and regenerated bed picks based on the signal strength at the originally identified bed pick. The swath radar data is converted to xyz points, calculated based on the speed of light in ice and air, the direction of arrival, and the two way travel time of the received signal. After removing outliers and performing a crossover analysis of overlapping measurements, the data was input into a kriging algorithm that performed a geostatistical interpolation of the area in between the existing radar data.
+}
+{
+The data processing algorithms reduce crossover errors where two swaths measure the same location, and indicate that some swaths (such as from the 2010 season) are unsuitable as kriging input due to poor resolution of the cross-track data. The resulting interpolation from combined swath and nadir data using the GStatSim Python package reveals artifacts from the input data in both, but adding the swath data resulted in increased texture in the areas where they were present, though it’s uncertain how much is due to the artifacting from the swaths themselves.
+}
+{
+The DEM outputs from this study will require future processing to remove the artifacts from the input data before any quantitative comparisons can be made, but future DEM generation can also incorporate swath data in other ways which were not tested here, such as informing kriging parameters like local anisotropy. Improving swath generation and kriging techniques has the potential to generate higher resolution DEMs, and improve our knowledge of glacier basal topography, for use in ice sheet modeling and glacier geomorphology analyses.
+}
+
+\newpage
