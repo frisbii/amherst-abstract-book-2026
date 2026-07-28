@@ -1,8 +1,7 @@
-from operator import itemgetter
+import csv
 import os
 import re
-import csv
-
+from operator import itemgetter
 
 
 def sanitize_for_latex(text: str) -> str:
@@ -87,7 +86,7 @@ def main():
 }}
 {{
 {rf"\\{'\n'}".join(
-    re.sub(r'\(([0-9]+)\)\s*', r'\\textsuperscript{\1}', line)
+    re.sub(r'\(([0-9]+)\)\s*', r'\\textsuperscript{\1} ', line)
     for line in row["affiliations"].split('\n')
     if line
 )}
