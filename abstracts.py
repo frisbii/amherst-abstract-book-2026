@@ -29,7 +29,7 @@ def generate_texname(discipline: str, title: str) -> str:
     
     # Fallback if title has no alphanumeric characters
     if not title_clean:
-        title_clean = "abstract"
+        title_clean = "FAILED_TO_NAME"
         
     return f"{disc_clean}_{title_clean}.tex"
 
