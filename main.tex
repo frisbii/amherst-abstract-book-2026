@@ -1,18 +1,14 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\documentclass[11pt,twoside]{article}
-\usepackage[margin=1in,top=1.2in,headheight=20pt]{geometry}
-\usepackage{mathptmx}
-\usepackage{setspace}
-\usepackage[indent=0pt, skip=11pt]{parskip}
-\usepackage{shellesc}
-
-\usepackage{csvsimple-l3}
-%\input{preamble}
+\documentclass[11pt,twoside]{article} % define document type
+\usepackage[margin=1in,top=1.2in,headheight=20pt]{geometry} % set margins
+\usepackage{mathptmx} % set font to times new roman
+\usepackage{setspace} % control line spacing
+\usepackage[indent=0pt, skip=11pt]{parskip} % add paragraph gaps
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % FANCYHDR
-\usepackage{fancyhdr}
+\usepackage{fancyhdr} % add fancy headers
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0.5pt} 
 \renewcommand{\footrulewidth}{0.5pt}
@@ -29,7 +25,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % TITLESEC
-\usepackage{titlesec}
+\usepackage{titlesec} % change heading formatting
 \titleformat{\section}
   {\LARGE\bfseries\centering}{\thesection}{1em}{}                                
 \titleformat{\subsection}
@@ -43,34 +39,21 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newenvironment{simplechar}{%
-   \catcode`\$=12
-   \catcode`\&=12
-   \catcode`\#=12
-   \catcode`\^=12
-   \catcode`\_=12
-   \catcode`\~=12
-   \catcode`\%=12
-}{}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% spacing shenanigans
 %\raggedright
 %\tolerance=1
 \emergencystretch=\maxdimen % stops overflow on right edge
 \hyphenpenalty=10000 % stops hyphenation to maintain justify
 %\hbadness=10000
+\setstretch{1.1} % set line spacing
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\setstretch{1.1}
-
 \newcommand{\usection}[1]{\section*{#1}\addcontentsline{toc}{section}{#1}}
 \newcommand{\usubsection}[1]{\subsection*{#1}\addcontentsline{toc}{subsection}{#1}\thispagestyle{sectionpage}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \newcommand{\startdiscipline}[1]{
     \thispagestyle{sectionpage}
     \phantomsection
@@ -97,7 +80,6 @@
     \textbf{Results.}#6\par
     \textbf{Conclusion.}#7\par
 }
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
