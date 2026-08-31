@@ -2,9 +2,10 @@
 
 \documentclass[11pt,twoside]{article} % define document type
 \usepackage[margin=1in,top=1.2in,headheight=20pt]{geometry} % set margins
-\usepackage{mathptmx} % set font to times new roman
 \usepackage{setspace} % control line spacing
 \usepackage[indent=0pt, skip=11pt]{parskip} % add paragraph gaps
+\usepackage{newtxtext} 
+\usepackage{newtxmath}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % FANCYHDR
@@ -27,9 +28,9 @@
 % TITLESEC
 \usepackage{titlesec} % change heading formatting
 \titleformat{\section}
-  {\LARGE\bfseries\centering}{\thesection}{1em}{}                                
+  {\LARGE\bfseries\boldmath\centering}{\thesection}{1em}{}                                
 \titleformat{\subsection}
-  {\Large\bfseries}{\thesubsection}{1em}{}                                
+  {\Large\bfseries\boldmath}{\thesubsection}{1em}{}                                
 \titlespacing{\subsection}
   {0pt}{0pt}{0pt}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
