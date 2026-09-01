@@ -1,0 +1,32 @@
+\makeabstractSHORT
+{ % #1: Title
+An Algebraic Encoding of Bipartite R.E.C.s
+}
+{ % #2: Authors
+Nimaga Amadou Beydi\textsuperscript{1}
+}
+{ % #3: Affiliations
+\textsuperscript{1} Amherst College, Amherst, MA
+}
+{ % #4: Abstract
+Bipartite regular edge colorings (R.E.C.s) are edge-colorings of a balanced bipartite graph \(G=(V_1\sqcup V_2,E)\) with \(|V_1|=|V_2|=m\), using \(n\) colors, such that every vertex is incident to exactly one edge of each color. Classically, R.E.C.s can be represented as sums of permutation matrices. While this representation is useful computationally, it does not directly expose how different color classes interact. The union of two color classes decomposes into alternating cycles. We give an algebraic description of bipartite R.E.C.s via compatible families of permutations/derangements, and prove that this encoding loses no information up to relabeling of one bipartition.
+
+Each perfect matching can be encoded by an involution \(\tau_i\in\operatorname{Sym}(V)\) that exchanges the two parts \(V_1\) and \(V_2\). Composing two colors \(i\) and \(j\) gives a permutation of \(V_1\),
+\[
+\delta_{ij}=(\tau_j\circ\tau_i)|_{V_1}.
+\]
+For \(i\ne j\), this permutation is fixed-point-free; hence \(\delta_{ij}\) is a derangement. These derangements are not independent: they satisfy the gluing relation
+\[
+\delta_{k\ell}\circ\delta_{ak}=\delta_{a\ell}.
+\]
+Thus, the interaction of the color classes is encoded by a compatible family of permutations on \(V_1\).
+
+A family \(D=(\delta_{k\ell})_{k,\ell\in[n]}\) is compatible if it satisfies the identities \(\delta_{kk}=\operatorname{id}_{V_1}\), the gluing condition, and fixed-point-freeness for every \(k\ne\ell\). Conversely, every compatible family comes from an abstract R.E.C. by choosing any bijection \(\tau_1:V_1\to V_2\) and defining the involutions \(\tau_\ell\). Realization is unique up to relabeling \(V_2\).
+
+Therefore, each classical R.E.C. determines a compatible family, and conversely. In particular,
+\[
+\mathcal G_n/\sim\;\cong\;\mathcal F_n/\sim\;\cong\;\mathcal D_n,
+\]
+where \(\mathcal G_n\) is the collection of classical bipartite R.E.C.s with \(n\) colors, \(\mathcal F_n\) is the collection of abstract R.E.C.s encoded by involutions, and \(\mathcal D_n\) is the collection of compatible families of derangements.
+}
+ \newpage

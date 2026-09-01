@@ -87,7 +87,7 @@ def main():
             continue
 
         # skip rows that aren't ready
-        if row["FORMATTED"] != "TRUE":
+        if row["SUPERFORMATTED"] != "TRUE":
             continue
 
         # form filename

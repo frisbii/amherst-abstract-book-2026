@@ -1,0 +1,26 @@
+\makeabstract
+{ % #1: Title
+Generating Morphology-Informed Multi-Sphere Representations of the LHS-1D Lunar Dust Simulant for DEM Simulations
+}
+{ % #2: Authorship
+Diana A. Vargas\textsuperscript{1}, 
+Matthew K. Crews\textsuperscript{2}, 
+Tarek A. Elgohary\textsuperscript{2} 
+}
+{ % #3: Affiliations
+\textsuperscript{1} Department of Physics, Amherst College, Amherst, MA \\
+\textsuperscript{2} Department of Mechanical and Aerospace Engineering, University of Central Florida, Orlando, FL
+}
+{ % #4: Purpose
+Lunar regolith's fine, irregular, electrostatically charged particles threaten surface hardware and EVA suits. Discrete Element Method (DEM) simulations typically represent regolith as spheres, limiting fidelity to real contact and adhesion behavior. This work develops a morphology-informed workflow that converts measured LHS-1D lunar dust simulant morphology into non-spherical, DEM-compatible multi-sphere particles, supporting future simulations of dust adhesion, transport, and mitigation strategies.
+}
+{ % #5: Methods
+Principal Component Analysis extracted size and shape descriptors (equivalent diameter, aspect/elongation/flatness indices, sphericity, roughness) from over 71,000 LHS-1D STL meshes in the NIST particle database. These distributions parameterized a Spherical Harmonics Particle Shape Generator, producing 10,000 synthetic particles, with low-degree terms setting base shape and higher-degree terms adding irregularity and roughness. Two workflows then converted particles into DEM-ready multi-sphere clumps: an STL-reference method fitting spheres to each generated mesh, and a Direct method sampling morphology statistics without an intermediate mesh. Clumps were imported into LIGGGHTS to verify DEM compatibility.
+}
+{ % #6: Results
+Generated particles reproduced equivalent diameter, aspect ratio, elongation, and sphericity with close-to-moderate agreement (mean errors under 6\%, SD ratios 0.84--0.98), while roughness agreement was poor (40\% mean error). Among clump-fitting workflows, the Direct method matched bulk shape descriptors better than the STL-reference method and generated 1,000 clumps roughly 172$\times$ faster (0.183 s vs. 31 s per particle, two-worker configuration), though both showed poor roughness agreement (19--94\% mean error). Form classification confirmed particles were predominantly compact, consistent with the measured LHS-1D population. Successful LIGGGHTS import confirmed correct clump reconstruction.
+}
+{ % #7: Conclusion
+This workflow links measured LHS-1D morphology to computationally efficient, non-spherical DEM particles, with the Direct method offering the best balance of speed and fidelity for large populations. Surface roughness remains the primary limitation and target for refinement. Future work will integrate a screened Coulomb--Yukawa electrostatic solver into LIGGGHTS to study charge-driven dust adhesion and transport relevant to Artemis surface operations.
+}
+ \newpage
