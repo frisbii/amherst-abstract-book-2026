@@ -56,6 +56,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand{\startdiscipline}[1]{
+    \cleardoublepage
     \thispagestyle{sectionpage}
     \phantomsection
     \addcontentsline{toc}{section}{#1}
@@ -81,16 +82,29 @@
     \textbf{Results.}#6\par
     \textbf{Conclusion.}#7\par
 }
+
+\newcommand{\makeabstractSHORT}[4]{%
+    % #1: Title
+    % #2: Authors
+    % #3: Affiliations
+    % #4: Content
+    \phantomsection
+    \addcontentsline{toc}{subsection}{#1}
+    \subsection*{#1}
+    {#2}\par
+    {#3}\par
+    {#4}\par
+}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 
-\newpage
+\null
+\clearpage
 
+\thispagestyle{sectionpage}
 \tableofcontents
-
-\newpage
 
 \input{abstracts_index.tex}
 

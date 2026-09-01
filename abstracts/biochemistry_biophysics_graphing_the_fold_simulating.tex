@@ -1,0 +1,25 @@
+\makeabstract
+    {
+    Graphing the Fold: Simulating the Energy Landscapes of ApoE3 and ApoE4
+    }
+    {
+    Joel Owusu-Ansah\textsuperscript{1}, Ben Davis\textsuperscript{1}, Sheila Jaswal\textsuperscript{1}
+    }
+    {
+    \textsuperscript{1} Department of Chemistry, Program in Biophysics and Biochemistry, Amherst College, Amherst, MA
+    }
+    {
+    Apolipoprotein E (ApoE) is a lipid transport protein in the brain with three isoforms --- E2, E3, and E4 --- that differ by only one or two residues yet confer strikingly different risks of Alzheimer's disease, with ApoE4 associated with a significantly increased risk. Despite their near-identical sequence and structure, ApoE3 and ApoE4 carry very different disease risk. This project investigates whether differences in protein-folding stability and dynamics can help explain the gap, focusing on the N-terminal fragments (NTFs) of ApoE3 and ApoE4.
+    }
+    {
+    Folding and unfolding kinetics were characterized using hydrogen exchange mass spectrometry (HX-MS), which tracks the exchange of backbone amide hydrogens for deuterium over time as a readout of protein stability. Quantitative folding and unfolding rate constants were extracted from HX-MS data using NumSimEX, a Gillespie-algorithm-based numerical simulation tool, by fitting simulated exchange timecourses to experimental data (np = 5000 simulated proteins). These rate constants were used to construct free energy landscapes for each isoform.
+    }
+    {
+    ApoE3 (NTF) was found to be more thermodynamically stable than ApoE4 (NTF), with a higher free energy of unfolding (\ensuremath{\Delta}G = 20.07 kJ/mol vs. 17.07 kJ/mol, a 3.00 kJ/mol difference). ApoE3 was also more kinetically stable, unfolding roughly 6.7 times more slowly than ApoE4 (ku \ensuremath{\approx} 0.03 s\ensuremath{^-}{\textonesuperior} vs. 0.2 s\ensuremath{^-}{\textonesuperior}) and facing a higher energy barrier to unfolding (\ensuremath{\Delta}G{\textdaggerdbl} = 81.43 kJ/mol vs. 76.74 kJ/mol). Notably, ApoE3 protected only about 3\% of its exchangeable sites in the native state, compared to roughly 75\% for ApoE4, suggesting that ApoE4's native structure is inherently more open and dynamic, which may help explain its reduced stability.
+    }
+    {
+    These findings suggest that ApoE3 and ApoE4 differ measurably in both thermodynamic and kinetic folding stability despite their near-identical sequences, and that ApoE4's more open native-state dynamics may contribute to its reduced structural stability. Future work will extend this analysis to a 3-state folding model, address parameter non-identifiability by reporting ranges across multiple fitting seeds, and test NumSimEX's generalizability on additional HX-MS datasets beyond ApoE3/ApoE4.
+    }
+
+    \newpage
+    

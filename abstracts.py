@@ -2,10 +2,14 @@ import csv
 import os
 import re
 from operator import itemgetter
-import sys
 
+from pylatexenc.latexencode import (
+    RULE_DICT,
+    UnicodeToLatexConversionRule,
+    UnicodeToLatexEncoder,
+)
 
-def sanitize_for_latex(text: str) -> str:
+""" def sanitize_for_latex(text: str) -> str:
     # single backslashes
     text = text.replace('\\', r'\textbackslash{}')
     
@@ -16,7 +20,7 @@ def sanitize_for_latex(text: str) -> str:
     text = text.replace('~', r'\textasciitilde{}')
     text = text.replace('^', r'\textasciicircum{}')
     
-    return text
+    return text """
 
 
 fail_count = 0
@@ -33,6 +37,8 @@ def generate_texname(discipline: str, title: str) -> str:
         global fail_count
         title_clean = f"FAILED_TO_NAME_{fail_count}"
         fail_count += 1 
+
+        print(f"generate_texname: failed to form filename from discipline:{discipline} and title:{title}")
         
     return f"{disc_clean}_{title_clean}.tex"
 
@@ -59,78 +65,89 @@ def main():
     raw_count = 0
     skipped_count = 0
 
+    conversion_rule = UnicodeToLatexConversionRule(
+        rule_type=RULE_DICT,
+        rule={
+            0x237A : r"\ensuremath{\alpha}",
+            0x200B : r"",
+            0x1D6C4 : r"\ensuremath{\boldsymbol{\gamma}}",
+            0x1D6FE : r"\ensuremath{\gamma}",
+            0x1D6FC : r"\ensuremath{\alpha}",
+            0x2A09 : r"\ensuremath{\times}",
+            0x2212 : r"\ensuremath{-}",
+            0x2014 : r"---"
+        }
+    )
+    u = UnicodeToLatexEncoder(unknown_char_policy="replace", conversion_rules=[conversion_rule, "defaults"])
+    uraw = UnicodeToLatexEncoder(unknown_char_policy="replace", conversion_rules=[conversion_rule])
+
     for row in rows:
         # skip empty rows
-        if not row["timestamp"]:
-            continue    
-        
+        if not row["Timestamp"]:
+            continue
 
-    sys.exit(1)
+        # skip rows that aren't ready
+        if row["FORMATTED"] != "TRUE":
+            continue
 
-
-
-    # sanitize submissions
-    sanitized_rows = [
-        {k: sanitize_for_latex(v) if (not row["latex"] and v is not None) else v for k, v in row.items()}
-        for row in rows
-    ]
-
-
-
-    for row in sanitized_rows:
-        # unique ordered file name
-        filename = generate_texname(row["discipline"], row["title"])
+        # form filename
+        if row["latex"]:
+            filename = generate_texname(row["discipline"], row["First Name"] + " " + row["Last Name"]) 
+        else:
+            filename = generate_texname(row["discipline"], row["title"])
         filepath = os.path.join("abstracts", filename)
 
         # start new discipline in index
-        if row["discipline"] != lastdisc:
-            lastdisc = row["discipline"]
+        disc_sanitized = row["discipline"].replace("&", "and")
+        if disc_sanitized != lastdisc:
+            lastdisc = disc_sanitized
             index_out += f"\n\\startdiscipline{{ {lastdisc} }}\n\n"
 
-        # do not overwrite if file already created
+        # don't reprocess existing abstracts as they could be edited already
         if os.path.exists(filepath):
             skipped_count += 1
         else:
+            # form the file contents for this abstract
             if row["latex"]:
                 raw_count += 1
-                out = row["latex"]
-                print(out)
+                out = uraw.unicode_to_latex(row["latex"])
+                out += "\n \\newpage"
             else:
                 created_count += 1
-                # use our \makeabstract command
+                row = {k : u.unicode_to_latex(v) if v is not None else v for k, v in row.items()}
                 out = f"""\\makeabstract
-{{
-{row["title"]}
-}}
-{{
-{re.sub(r"\\s*\\(([^)]+)\\)", r"\\\\textsuperscript{\\1}", row["authorship"])}
-}}
-{{
-{rf"\\{'\n'}".join(
-    re.sub(r'\(([0-9]+)\)\s*', r'\\textsuperscript{\1} ', line)
-    for line in row["affiliations"].split('\n')
-    if line
-)}
-}}
-{{
-{row["purpose"]}
-}}
-{{
-{row["methods"]}
-}}
-{{
-{row["results"]}
-}}
-{{
-{row["conclusion"]}
-}}
+    {{
+    {row["title"]}
+    }}
+    {{
+    {re.sub(r"\s*\(([^)]+)\)", r"\\textsuperscript{\1}", row["authorship"])}
+    }}
+    {{
+    {rf"\\{'\n'}".join(
+        re.sub(r'\(([0-9]+)\)\s*', r'\\textsuperscript{\1} ', line)
+        for line in row["affiliations"].split('\n')
+        if line
+    )}
+    }}
+    {{
+    {row["purpose"]}
+    }}
+    {{
+    {row["methods"]}
+    }}
+    {{
+    {row["results"]}
+    }}
+    {{
+    {row["conclusion"]}
+    }}
 
-\\newpage
-"""
+    \\newpage
+    """
 
-            # write whatever the out should be to the index
-            """ with open(filepath, "w", encoding="utf-8") as f:
-                f.write(out) """
+            # write to the output file
+            with open(filepath, "w", encoding="utf-8") as f:
+                f.write(out)
 
         # always update index
         index_out += f"\\input{{abstracts/{filename}}}\n"
@@ -141,7 +158,6 @@ def main():
 
     print(f"Done! Created {created_count} new files, added {raw_count} new raw latex submissions, and preserved {skipped_count} existing files.")
     print("Index updated in abstracts_index.tex.")
-
 
 
 if __name__ == "__main__":

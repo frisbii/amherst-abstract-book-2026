@@ -1,0 +1,27 @@
+\makeabstract
+    {
+    Modelling the Twins Detector at the Black Hills Underground Campus (BHUC)
+    }
+    {
+    Varsha Palaniyandy\textsuperscript{1}, Dr. Frederick Schuckman\textsuperscript{2,3}
+    }
+    {
+    \textsuperscript{1} Department of Physics and Astronomy, Amherst College, Amherst, MA\\
+\textsuperscript{2} Department of Physics, Black Hills State University, Spearfish, SD\\
+\textsuperscript{3} Department of Physics, Colorado State University, Fort Collins, CO
+    }
+    {
+    During this research project, a simulation was created to model the Twins detector in the Sanford Underground Research Facility{\textquoteright}s (SURF) Black Hills Underground Campus (BHUC). The Twins is a dual crystal High Purity Germanium (HPGe) detector used for low background counting. Low background counting is a method for detecting the amount of radiation coming from a given sample as elements in the sample decay. The focus of this project was to use Geant4, a particle physics simulation software, to model these interactions and compare them with the Twins{\textquoteright} data. Creating a simulation and comparing its results with the Twins{\textquoteright} data is an important pursuit because scientists can measure how efficient the Twins detector is at collecting data, since the simulation allows us to specify how many gamma rays are initially shot vs. how many are detected, which is not a measurement the Twins detector is capable of.
+    }
+    {
+    We created a Geant4 simulation which mimicked the Twins detector{\textquoteright}s geometry, created a mock sample to shoot gammas at the crystals, and recorded the results as energy spectra. Energy spectra are graphs of the energy the gamma rays deposit in the crystals as they pass through; this energy is what creates the electrical current scientists record as a signal. These spectra are compared with the spectra the Twins detector produces.
+    }
+    {
+    So far, the simulation has successfully mimicked the Twins detector, but we made simplifying assumptions to make the simulation, which impacts how closely it resembles the Twins detector. For example, we simplified the geometry of the detector into cube shapes, despite the real Twins detector{\textquoteright}s crystals being u-shaped. Additionally, the simulation does not include the error in measurements taken in the real world. For example, the electronics the Twins detector uses to collect data {\textquotedblleft}smear{\textquotedblright} that data due to limits on how quickly the electronics can identify electrical signals. Therefore, while the simulation does recreate many of the same processes as the Twins detector, they do not currently match well enough to compare.
+    }
+    {
+    The simulation is still too ideal to be compared with the Twins detector, so this project{\textquoteright}s next steps are to simulate the real world{\textquoteright}s noise, such as the error the electronics of the Twins detector introduces to its data. Eventually, the goal is to measure the efficiency of the Twins detector at low background counting.
+    }
+
+    \newpage
+    
