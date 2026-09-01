@@ -2,6 +2,7 @@ import csv
 import os
 import re
 from operator import itemgetter
+import sys
 
 
 def sanitize_for_latex(text: str) -> str:
@@ -18,7 +19,7 @@ def sanitize_for_latex(text: str) -> str:
     return text
 
 
-
+fail_count = 0
 def generate_texname(discipline: str, title: str) -> str:
     # Clean discipline name
     disc_clean = re.sub(r'[^a-zA-Z0-9]+', '_', discipline).strip('_').lower()
@@ -29,7 +30,9 @@ def generate_texname(discipline: str, title: str) -> str:
     
     # Fallback if title has no alphanumeric characters
     if not title_clean:
-        title_clean = "FAILED_TO_NAME"
+        global fail_count
+        title_clean = f"FAILED_TO_NAME_{fail_count}"
+        fail_count += 1 
         
     return f"{disc_clean}_{title_clean}.tex"
 
@@ -48,18 +51,31 @@ def main():
     # sort
     rows.sort(key=itemgetter("discipline", "title"))
 
-    # sanitize submissions
-    sanitized_rows = [
-        {k: sanitize_for_latex(v) if v is not None else v for k, v in row.items()}
-        for row in rows
-    ]
-
     # create index file
     index_out = "% Auto-generated index file\n\n"
     lastdisc = ""
 
     created_count = 0
+    raw_count = 0
     skipped_count = 0
+
+    for row in rows:
+        # skip empty rows
+        if not row["timestamp"]:
+            continue    
+        
+
+    sys.exit(1)
+
+
+
+    # sanitize submissions
+    sanitized_rows = [
+        {k: sanitize_for_latex(v) if (not row["latex"] and v is not None) else v for k, v in row.items()}
+        for row in rows
+    ]
+
+
 
     for row in sanitized_rows:
         # unique ordered file name
@@ -75,9 +91,14 @@ def main():
         if os.path.exists(filepath):
             skipped_count += 1
         else:
-            created_count += 1
-            # use our \makeabstract command
-            out = f"""\\makeabstract
+            if row["latex"]:
+                raw_count += 1
+                out = row["latex"]
+                print(out)
+            else:
+                created_count += 1
+                # use our \makeabstract command
+                out = f"""\\makeabstract
 {{
 {row["title"]}
 }}
@@ -106,8 +127,10 @@ def main():
 
 \\newpage
 """
-            with open(filepath, "w", encoding="utf-8") as f:
-                f.write(out)
+
+            # write whatever the out should be to the index
+            """ with open(filepath, "w", encoding="utf-8") as f:
+                f.write(out) """
 
         # always update index
         index_out += f"\\input{{abstracts/{filename}}}\n"
@@ -116,7 +139,7 @@ def main():
     with open("abstracts_index.tex", "w", encoding="utf-8") as f:
         f.write(index_out)
 
-    print(f"Done! Created {created_count} new files, preserved {skipped_count} existing files.")
+    print(f"Done! Created {created_count} new files, added {raw_count} new raw latex submissions, and preserved {skipped_count} existing files.")
     print("Index updated in abstracts_index.tex.")
 
 
