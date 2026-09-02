@@ -9,6 +9,14 @@
 \usepackage{nextpage}
 \usepackage{pdfpages}
 
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd{\@dottedtocline}
+  {\rightskip\@tocrmarg}
+  {\rightskip\@tocrmarg plus 4em \hyphenpenalty\@M}
+  {}{}
+\makeatother
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % FANCYHDR
 \usepackage{fancyhdr} % add fancy headers
