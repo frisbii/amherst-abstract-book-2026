@@ -1,0 +1,27 @@
+\makeabstract
+    {
+    Show, Don{\textquoteright}t Ask: Resolving ambiguities in interactive Text-to-SQL environments using differentiated databases
+    }
+    {
+    Andrew Tremante\textsuperscript{1}, Tasnim Reza Arittra\textsuperscript{2}, Nina Narodytska\textsuperscript{3}, Andrew Wu\textsuperscript{2}
+    }
+    {
+    \textsuperscript{1} IBM\\
+\textsuperscript{2} Amherst College, Amherst, MA\\
+\textsuperscript{3} Broadcom
+    }
+    {
+    Text-to-SQL is the task of translating natural language questions into executable SQL queries, enabling non-technical users to access and analyze data. Our research studies the effects of introducing a differentiation-based approach in ambiguity resolution in Text-to-SQL systems. Specifically, it investigates under what conditions this approach improves performance on BIRD-Interact, a Text-to-SQL benchmark for evaluating LLM performance under ambiguous settings. 
+    }
+    {
+    Given an ambiguous task from a simulated human user, a Text-to-SQL agent generates multiple candidate SQL interpretations of the user{\textquoteright}s request. The system synthesizes database instances that distinguish a pair of candidates, based on a technique known in programming as fuzzing. Provenance analysis is then conducted on the database to show the user the smallest set of relevant database and result tables. The simulated user then selects the output reflecting their intent by comparing candidate outputs against a ground-truth solution. This decision informs a candidate pruning process, guiding candidate regeneration that reflects a more informed understanding of the user{\textquoteright}s intent. Through multiple rounds of these interactions, the Text-to-SQL agent resolves the ambiguities in the user{\textquoteright}s initial prompt, converging to a final SQL that can be  evaluated against a ground-truth SQL on BIRD-Interact{\textquoteright}s benchmark databases.
+    }
+    {
+    Initial results are verified on a set of 50 questions chosen across all 22 BIRD-Interact databases. The fuzzing module achieves 98.4\% recall in differentiating the candidate pairs during interactions. Overall task accuracy ranges from 8-14\% on the test set, a competitive result compared to the performance of top models on BIRD-Interact.
+    }
+    {
+    Database fuzzing emerges as an effective technique to  differentiate two queries, as demonstrated by the high recall (98.4\%) score. But the low success rate of the full interaction loop (8-14\%) highlights the challenges of the BIRD-interact tasksuite. It suggests that the optimal approach might require a combination of database differentiation with the traditional natural language ambiguity resolution. This represents the current direction of the research. 
+    }
+
+    \newpage
+    
