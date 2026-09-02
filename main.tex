@@ -31,6 +31,11 @@
   \renewcommand{\footrulewidth}{0pt}
   \fancyhead[LE,RO]{\thepage}
 }
+
+\fancypagestyle{ackpage}{
+  \fancyhf{}
+  \fancyhead[LE,RO]{\thepage}
+}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -134,7 +139,7 @@
 \null
 \clearpage
 
-\pagestyle{fancy}
+\thispagestyle{ackpage}
 
 Amherst College Summer Research Abstract Book
 
@@ -154,10 +159,12 @@ insert a line
 
 This booklet showcases the research accomplished by Amherst College students in the summer of 2026. We hope it serves as a resource for future students interested in undergraduate scientific research.
 
-\cleartooddpage[\thispagestyle{sectionpage}]
+\cleartooddpage[\thispagestyle{ackpage}]
 
 \thispagestyle{sectionpage}
 \tableofcontents
+
+\pagestyle{fancy}
 
 \input{abstracts_index.tex}
 
