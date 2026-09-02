@@ -31,6 +31,11 @@
   \renewcommand{\footrulewidth}{0pt}
   \fancyhead[LE,RO]{\thepage}
 }
+
+\fancypagestyle{ackpage}{
+  \fancyhf{}
+  \fancyhead[LE,RO]{\thepage}
+}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -119,29 +124,42 @@
 \clearpage
 
 \begin{titlepage}
-  \thispagestyle{empty}
-  \vspace*{\fill}
   \begin{center}
-    Amherst College Summer Research Abstract Book 
-    
-    2026
+    \setstretch{4}
+    {\fontsize{40}{100}\selectfont \textbf{Amherst College Summer Research Abstract Book}}
+    {\fontsize{30}{0}\selectfont 2026}
   \end{center}
-  \vspace*{\fill}
 \end{titlepage}
 
 \null
 \clearpage
 
-\pagestyle{fancy}
+\thispagestyle{ackpage}
 
-abstract book team
+Amherst College Summer Research Abstract Book
+
+\textbf{Editing Team}
+
+Madi Gudin '27 (lead editor), Arsenii Zharkov '28, Hannah Feng '28, Jesse Looney '27, Rafael Gómez '29 
+
+\textbf{Cover Art}
+
+Arum Han '28
+
+\textbf{Administrative Director of the Science Center}
+
+Jess Martin
+
+insert a line
 
 This booklet showcases the research accomplished by Amherst College students in the summer of 2026. We hope it serves as a resource for future students interested in undergraduate scientific research.
 
-\cleartooddpage[\thispagestyle{sectionpage}]
+\cleartooddpage[\thispagestyle{ackpage}]
 
 \thispagestyle{sectionpage}
 \tableofcontents
+
+\pagestyle{fancy}
 
 \input{abstracts_index.tex}
 
