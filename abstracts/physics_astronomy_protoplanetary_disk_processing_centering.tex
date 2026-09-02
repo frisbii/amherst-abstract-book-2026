@@ -1,0 +1,25 @@
+\makeabstract
+    {
+    Protoplanetary Disk Processing: Centering and Deprojecting
+    }
+    {
+    Alyx Bardoe\textsuperscript{1}, Kate Follette\textsuperscript{1}, Abby Quinby\textsuperscript{1}
+    }
+    {
+    \textsuperscript{1} Department of Physics \& Astronomy, Amherst College, Amherst, MA
+    }
+    {
+    Just after a star is formed, it is surrounded by a spiraling clump of dust and gas that flattens into a disk called a protoplanetary disk. These disks are the birthplace of planets and have been observed around nearby stars using millimeter and near-infrared light. Images show that most protoplanetary disks have features such as spirals or rings, which could signal planet formation. However, these are not the only theoretical causes of such features: temperature, magnetic fields, or other dynamic processes could also contribute. To better understand what affects these disk parameters, there needs to be a normalized method for classifying and analyzing disk substructures.
+    }
+    {
+    Here, the Comparative Analysis Tool for Normalized Imagery and Profiles, or CATNIP, comes in. This computational tool aims to create a more unified classification of structures within protoplanetary disks by using azimuthal and radial profiles. This project added a Python program to CATNIP that estimates the center and inclination of the disk. To find the center, two key assumptions were made: the disk images should be circular when face-on and mostly azimuthally symmetric. Using these assumptions and a contour ellipse-fitting program, the tool deprojected the image using each ellipse and assigned it a score for how well it aligned with the above assumptions. Then the ellipse with the best score returned the estimated center and inclination of the disk.
+    }
+    {
+    The program successfully identified 87\% of the disks{\textquoteright} centers accurately, and found an accurate deprojection 81\% of the time. These percentages remained roughly consistent across all substructures, as well as for near-infrared and millimeter data. This implies tool performance is not reliant on the substructure present in the disk.
+    }
+    {
+    In the future, this tool should be integrated into the CATNIP user interface. The difference between an accurate center and deprojection significantly changes the data collected from azimuthal and radial profiles. Then the CATNIP tool can be used to compare disk parameters across the documented population and find quantitative patterns for what is causing these substructures.
+    }
+
+    \newpage
+    

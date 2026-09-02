@@ -1,0 +1,26 @@
+\makeabstract
+    {
+    Parallel array characterization and preliminary SOT-MRAM modeling in MemSysExplorer
+    }
+    {
+    Will Sommers\textsuperscript{1}, Connor Bremner\textsuperscript{2}, Lillian Pentecost\textsuperscript{1}
+    }
+    {
+    \textsuperscript{1} Department of Computer Science, Amherst College, Amherst, MA\\
+\textsuperscript{2} Department of Electrical and Computer Engineering, Tufts University, Medford, MA
+    }
+    {
+    As processors continue to get faster, it has become more and more important that our memory systems scale to match. MemSysExplorer (MSX) is a software framework for evaluating memory systems in terms of performance, energy efficiency, and more. One critical component of MSX is the array characterizer, which predicts properties of memory chips given a high level specification. This research sought to improve the array characterizer in two ways: by improving its speed with parallelization, and by testing its ability to model arrays based on state-of-the-art SOT-MRAM cells.
+    }
+    {
+    For parallelization, we made use of the OpenMP library. The critical array parameter search loop, which evaluates every possible combination of array parameters to optimize for a provided target, was altered to safely distribute the work across multiple cores using a thread pool. For modeling SOT-MRAM arrays, we reviewed the literature of manufactured SOT chips, and selected the publication which provided the most empirical data. Using the array characterizer{\textquoteright}s existing MRAM cell type as a base, a new {\textquotedblleft}read pulse{\textquotedblright} parameter was added, and array characteristics were extrapolated based on the data provided in the paper for a variety of capacity configurations.
+    }
+    {
+    The newly introduced parallelization resulted in a marked improvement in array characterization speed when using multiple cores; on the college{\textquoteright}s FrostByte cluster, array characterization was 22 times faster on average when using 32 cores instead of just 1. Regarding the preliminary SOT-MRAM modeling, due to the novelty of the technology, there were few data points available to validate the model{\textquoteright}s extrapolated predictions. Given identical capacity and subarray layouts to the original paper, the existing model landed within 52\% of the original macro.
+    }
+    {
+    Parallel array characterization dramatically reduced search times, allowing for quicker iteration and testing. The initial work on characterizing SOT-based arrays was instructive, and as the technology develops further and more data becomes available, we will be able to further validate and refine the model.
+    }
+
+    \newpage
+    
