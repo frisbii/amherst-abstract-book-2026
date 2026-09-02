@@ -123,11 +123,14 @@
 
 \pagestyle{empty}
 
+% COVER PAGE!
 \includepdf{cover.pdf}
 
+% INSIDE COVER PAGE!
 \null
 \clearpage
 
+% TITLE PAGE!
 \begin{titlepage}
   \begin{center}
     \setstretch{4}
@@ -136,36 +139,47 @@
   \end{center}
 \end{titlepage}
 
+% INSIDE TITLE PAGE!
 \null
 \clearpage
 
+% ACKNOWLEDGEMENTS PAGE
 \thispagestyle{ackpage}
+{
+\begin{center}
+{\LARGE \textbf{Amherst College Summer Research Abstract Book 2026}}
+\end{center}
 
-Amherst College Summer Research Abstract Book
+{\large \textbf{Editing Team}}
 
-\textbf{Editing Team}
+Madi Gudin '27 (lead editor)\\
+Arsenii Zharkov '28\\
+Hannah Feng '28\\
+Jesse Looney '27\\
+Rafael Gómez '29 
 
-Madi Gudin '27 (lead editor), Arsenii Zharkov '28, Hannah Feng '28, Jesse Looney '27, Rafael Gómez '29 
-
-\textbf{Cover Art}
+{\large \textbf{Cover Art}}
 
 Arum Han '28
 
-\textbf{Administrative Director of the Science Center}
+{\large \textbf{Administrative Director of the Science Center}}
 
 Jess Martin
 
-insert a line
+\noindent\rule{\textwidth}{0.4pt}
 
 This booklet showcases the research accomplished by Amherst College students in the summer of 2026. We hope it serves as a resource for future students interested in undergraduate scientific research.
+}
 
+% CONTENTS PAGE
 \cleartooddpage[\thispagestyle{ackpage}]
-
 \thispagestyle{sectionpage}
+
 \tableofcontents
 
 \pagestyle{fancy}
 
+% IMPORT
 \input{abstracts_index.tex}
 
 \end{document}
